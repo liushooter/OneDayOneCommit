@@ -19,5 +19,8 @@ class Migration(migrations.Migration):
                 ('url', models.URLField()),
                 ('votes', models.IntegerField(default=0)),
             ],
+            options={
+                'db_table': 'blogs',
+            },
         ),
     ]
