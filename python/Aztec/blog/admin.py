@@ -7,7 +7,7 @@ class BlogAdmin(admin.ModelAdmin):
   # fields = ['title', 'desc', 'url', 'is_publish']
   fieldsets = [
     (None, {'fields': ['title', 'desc', 'url']}),
-    ('Published', {'fields': ['is_publish']}),
+    ('Published', {'fields': ['is_publish'], 'classes': ['collapse']}),
   ]
 
 admin.site.register(Blog, BlogAdmin)
