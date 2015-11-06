@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, Http404
 from django.template import RequestContext, loader
 from .models import Blog
@@ -17,8 +17,12 @@ def index(request):
     return render(request, 'index.html', context) # shortcuts
 
 def show(request, id):
-    try:
-        blog = Blog.objects.get(id=id)
-    except Blog.DoesNotExist:
-        raise Http404("Blog does not exist")
+    blog = get_object_or_404(Blog, id=id)
     return render(request, 'show.html', {'blog': blog})
+
+# def show(request, id):
+#     try:
+#         blog = Blog.objects.get(id=id)
+#     except Blog.DoesNotExist:
+#         raise Http404("Blog does not exist")
+#     return render(request, 'show.html', {'blog': blog})
