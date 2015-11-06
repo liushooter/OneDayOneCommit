@@ -8,6 +8,7 @@ class Blog(models.Model):
     title = models.CharField(max_length=200)
     desc = models.TextField()
     url = models.URLField()
+    is_publish = models.BooleanField(default=False)
     votes = models.IntegerField(default=0)
 
     class Meta:
