@@ -1,3 +1,8 @@
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+<script src="{% static 'js/app.js' %}"></script>
+
+<!-- /static/css/style.css -->
 {% if blog_list %}
     <ul>
     {% for blog in blog_list %}

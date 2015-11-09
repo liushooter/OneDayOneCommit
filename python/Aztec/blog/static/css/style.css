@@ -1,0 +1,11 @@
+body {
+  background: white url("/static/images/sanfrancisco.jpg") no-repeat right bottom;
+}
+
+li a {
+  color:black;
+}
+
+a {
+  color:blue;
+}
