@@ -4,6 +4,7 @@
       <li>
         <a href="{% url 'show' blog.id %}">{{ blog.title }}</a>
         <a href="{{ blog.id }}/edit">Edit</a>
+        <a href="{{ blog.id }}/destroy">Destroy</a>
       </li>
     {% endfor %}
     </ul>

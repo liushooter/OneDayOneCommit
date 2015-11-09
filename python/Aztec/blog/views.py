@@ -56,8 +56,11 @@ def update(request, id):
     else:
         return render(request, 'index.html')
 
-def destroy(request):
-    None
+def destroy(request, id):
+    blog = get_object_or_404(Blog, id=id)
+    blog.delete()
+
+    return redirect('blog.views.index')
 
 # def show(request, id):
 #     try:
