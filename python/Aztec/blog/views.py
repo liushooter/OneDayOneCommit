@@ -7,7 +7,7 @@ from .models import Blog
 
 def index(request):
     blogs = Blog.objects.order_by('-created_at')[:5] # order by created_at desc limit 5
-    template = loader.get_template('index.html')
+    # template = loader.get_template('index.html')
 
     context = RequestContext(request, {
       'blog_list': blogs,
