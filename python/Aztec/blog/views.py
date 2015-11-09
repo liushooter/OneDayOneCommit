@@ -29,17 +29,35 @@ def new(request):
 def create(request):
     if request.method == "POST":
         form = BlogForm(request.POST)
-        if True: #form.is_valid():
+        if form.is_valid():
             blog = form.save()
-            # blog.save()
             return redirect('blog.views.show', id=blog.id)
         else:
-            return HttpResponse("is_valid")
-
+            return HttpResponse(form.errors)
     else:
         form = BlogForm()
         render(request, 'index.html')
 
+def edit(request, id):
+    blog = get_object_or_404(Blog, id=id)
+    form = BlogForm(instance=blog)
+    return render(request, 'edit.html', {'form': form, 'blog_id': blog.id })
+
+def update(request, id):
+    if request.POST:
+        blog = get_object_or_404(Blog, id=id)
+        form = BlogForm(request.POST, instance=blog)
+
+        if form.is_valid():
+            form.save()
+            return redirect('blog.views.show', id=blog.id)
+        else:
+            return HttpResponse(form.errors)
+    else:
+        return render(request, 'index.html')
+
+def destroy(request):
+    None
 
 # def show(request, id):
 #     try:
