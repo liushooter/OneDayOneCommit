@@ -1,0 +1,6 @@
+def double(x):
+  return(x * 2)
+
+# serpent compile mul2.se
+# serpent pretty_compile mul2.se
+# serpent compile_to_lll mul2.se
