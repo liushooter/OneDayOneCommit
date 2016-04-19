@@ -1,0 +1,12 @@
+//size(400, 600);
+//smooth();
+//noStroke();
+//translate(-200, -20);
+//scale(8.0);
+//fill(255, 0, 0);
+//beginShape();
+//vertex(50, 15);
+//bezierVertex(50, -5, 75, 5, 50, 45);
+//vertex(50, 15);
+//bezierVertex(50, -5, 25, 5, 50, 45);
+//endShape();
