@@ -1,9 +1,12 @@
 #include <stdio.h>
 
 #define MAXLINE 1000
+int max; // 目前为止发现的最长行的长度
+char line[MAXLINE]; // 当前输入行
+char longest[MAXLINE]; // 用于保存最长的行
 
-int my_getline(char line[], int maxline);
-void copy(char to[], char from[]);
+int my_getline(void);
+void copy(void);
 
 /*
   getline 是标准库函数
@@ -11,15 +14,14 @@ void copy(char to[], char from[]);
 
 main(){
   int len;  // 当前行长度
-  int max; // 目前为止发现的最长行的长度
-  char line[MAXLINE]; // 当前输入行
-  char longest[MAXLINE]; // 用于保存最长的行
+  extern int max;
+  extern char longest[];
 
   max = 0;
-  while((len = my_getline(line, MAXLINE)) > 0){
+  while((len = my_getline()) > 0){
     if (len > max){
       max = len;
-      copy(longest, line);
+      copy();
     }
   }
 
@@ -33,18 +35,19 @@ main(){
 /*
   将一行读入到s中并返回其长度
 */
-int my_getline(char s[], int lim){
+int my_getline(void){
   int c,i;
+  extern char line[];
 
-  for (int i = 0; i < lim-1 && ((c = getchar()) != EOF && c != '\n' ); ++i){
-      s[i] = c;
+  for (int i = 0; i < MAXLINE-1 && ((c = getchar()) != EOF && c != '\n' ); ++i){
+      line[i] = c;
   }
 
   if (c == '\n'){
-    s[i] = c;
+    line[i] = c;
     ++i;
   }
-  s[i] = '/0';
+  line[i] = '/0';
 
   return i;
 }
@@ -53,11 +56,12 @@ int my_getline(char s[], int lim){
 /*
   将 from 复制到to,这里指定to足够大
 */
-void copy(char to[], char from[]){
+void copy(){
   int i;
-  i = 0;
+  extern char line[], longest[];
 
-  while( (to[i] = from[i]) != '\0'){
+  i = 0;
+  while( (longest[i] = line[i]) != '\0'){
     ++i;
   }
 }
