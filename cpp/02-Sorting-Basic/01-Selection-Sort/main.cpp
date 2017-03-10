@@ -24,7 +24,7 @@ void selectionSort(T arr[], int n){ // arr[] 不受具体的类型限制
 }
 
 int main() {
-    int  n = 100;
+    int  n = 10000;
     int *arr = SortTestHelper::generateRandomArray(n, 0, n);
     float b[4] = {23.4, 12.4, 10, 12 };
     string c[4] = {"a", "b", "c", "d"};
@@ -34,24 +34,11 @@ int main() {
     selectionSort(arr, n);
     SortTestHelper::printArray(arr, n);
 
+    SortTestHelper::testSort("Selection Sort", selectionSort, arr, n);
+
     delete[] arr;
     cout << endl;
 
-    ////////////////////////////////
-    selectionSort(b, 4);
-    for (int i = 0; i < 4; ++i) {
-        cout << b[i] << " ";
-    }
-
-    cout << endl;
-
-    ////////////////////////////////
-    selectionSort(c, 4);
-    for (int j = 0; j < 4; ++j) {
-        cout << c[j] << " ";
-    }
-
-    cout << endl;
 
     ////////////////////////////////
     selectionSort(d, 4);
