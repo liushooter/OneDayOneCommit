@@ -1,7 +1,7 @@
 #gem install sparql
 #http://www.rubydoc.info/github/ruby-rdf/sparql/frames
 
-require 'sparql/client'
+require 'sparql'
 
 endpoint = "https://query.wikidata.org/sparql"
 sparql = <<'SPARQL'.chop
