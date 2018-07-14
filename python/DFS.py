@@ -24,22 +24,34 @@ graph = {
  }
 
 def DFS(graps, s):
-    queue = []
-    queue.append(s)
+    stack = []
+    stack.append(s)
     seen = set()
     seen.add(s)
+    parent = {s : None}
 
-    while (len(queue) >0):
-        vertex = queue.pop(0)
+    while (len(stack) >0):
+        vertex = stack.pop()
         nodes = graph[vertex]
 
         for w in nodes:
             if w not in seen:
-                queue.append(w)
+                stack.append(w)
                 seen.add(w)
+                parent[w] = vertex
 
         print(vertex)
+    return parent
 
-DFS(graph, "A")
-print("*"*20)
-DFS(graph, "E")
+# DFS(graph, "A")
+parent = DFS(graph, "E")
+print("-"*20)
+
+for key in parent:
+    print(key, parent[key])
+
+v= "B"
+
+while v != None:
+    print(v)
+    v= parent[v]
