@@ -4,3 +4,6 @@ version = "0.0.1"
 authors = ["'shooter' <'shooter@hyper.com'>"]
 
 [dependencies]
+time = "0.1.12"
+regex = "0.1.41"
+rocket = "0.3.16"
