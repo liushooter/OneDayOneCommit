@@ -1,0 +1,6 @@
+[package]
+name = "hyper"
+version = "0.0.1"
+authors = ["'shooter' <'shooter@hyper.com'>"]
+
+[dependencies]
