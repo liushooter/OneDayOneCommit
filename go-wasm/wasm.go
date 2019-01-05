@@ -6,6 +6,8 @@ import (
 	"syscall/js"
 )
 
+// GOARCH=wasm GOOS=js go build -o go.wasm wasm.go
+
 func main() {
 	println("Hello, WebAssembly")
 	fmt.Printf("OS: %s, Architecture: %s\n", runtime.GOOS, runtime.GOARCH)
