@@ -615,20 +615,33 @@ func UnpackRR(msg []byte, off int) (rr RR, off1 int) {
 	h, off, msg, _ := unpackRRHeader(msg, off)
 	end := off + int(h.Rdlength)
 	if h.Rrtype == TypeA {
+		fmt.Println("TypeA")
 		rr, off, _ = unpackA(h, msg, off)
+
 	} else if h.Rrtype == TypeAAAA {
+
+		fmt.Println("TypeAAAA")
 		rr, off, _ = unpackAAAA(h, msg, off)
+
 	} else if h.Rrtype == TypeMX {
+		fmt.Println("TypeMX")
+
 		rr, off, _ = unpackMX(h, msg, off)
 	} else if h.Rrtype == TypeNS {
+
+		fmt.Println("TypeNS")
+
 		rr, off, _ = unpackNS(h, msg, off)
 	} else if h.Rrtype == TypeCNAME {
+		fmt.Println("TypeCNAME")
+
 		rr, off, _ = unpackCNAME(h, msg, off)
 	} else if h.Rrtype == TypeSOA {
+		fmt.Println("TypeSOA")
+
 		rr, off, _ = unpackSOA(h, msg, off)
 	} else {
-		//fmt.Println("UnpackRR type not found : ", h.Rrtype)
-		//panic(nil)
+		fmt.Println("no type")
 		return rr, -1
 	}
 	if off != end {
@@ -713,6 +726,8 @@ func (dns *Msg) Unpack(msg []byte) (err error) {
 	// The header counts might have been wrong so we need to update it
 	//dh.Ancount = uint16(len(dns.Answer))
 	if dh.Nscount > 0 {
+
+		fmt.Printf(">>> Nscount")
 		dns.Ns, off = unpackRRslice(int(dh.Nscount), msg, off)
 		if off == -1 {
 			//fmt.Printf("%+v\n", dh)
@@ -724,6 +739,8 @@ func (dns *Msg) Unpack(msg []byte) (err error) {
 	// The header counts might have been wrong so we need to update it
 	//dh.Nscount = uint16(len(dns.Ns))
 	if dh.Arcount > 0 {
+
+		fmt.Printf(">>> Arcount")
 		dns.Extra, off = unpackRRslice(int(dh.Arcount), msg, off)
 		if off == -1 {
 			//fmt.Printf("%+v\n", dh)

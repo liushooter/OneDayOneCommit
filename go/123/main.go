@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-type DNSHeader1 struct {
+type DNSHeader struct {
 	ID            uint16
 	Flag          uint16
 	QuestionCount uint16
@@ -18,7 +18,21 @@ type DNSHeader1 struct {
 	AdditionalRRs uint16
 }
 
-func (header *DNSHeader1) SetFlag(QR uint16, OperationCode uint16, AuthoritativeAnswer uint16, Truncation uint16, RecursionDesired uint16, RecursionAvailable uint16, ResponseCode uint16) {
+type DNSQuery struct {
+	QuestionType  uint16
+	QuestionClass uint16
+}
+
+type dnsAnswer struct {
+	Name   uint16
+	Qtype  uint16
+	Qclass uint16
+	QLive  uint32
+	QLen   uint16
+	CName  string
+}
+
+func (header *DNSHeader) SetFlag(QR uint16, OperationCode uint16, AuthoritativeAnswer uint16, Truncation uint16, RecursionDesired uint16, RecursionAvailable uint16, ResponseCode uint16) {
 	header.Flag = QR<<15 + OperationCode<<11 + AuthoritativeAnswer<<10 + Truncation<<9 + RecursionDesired<<8 + RecursionAvailable<<7 + ResponseCode
 }
 
@@ -41,7 +55,7 @@ func ParseDomainName(domain string) []byte {
 
 func main() {
 	var (
-		dns_header   DNSHeader1
+		dns_header   DNSHeader
 		dns_question DNSQuery
 	)
 
