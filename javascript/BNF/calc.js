@@ -75,9 +75,9 @@ var calc = (function(){
 var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o};
 var parser = {trace: function trace () { },
 yy: {},
-symbols_: {"error":2,"expressions":3,"NUMBER":4,"EOF":5,"$accept":0,"$end":1},
-terminals_: {2:"error",4:"NUMBER",5:"EOF"},
-productions_: [0,[3,2]],
+symbols_: {"error":2,"expressions":3,"NUMBER":4,"EOF":5,"statement":6,"PLUS":7,"$accept":0,"$end":1},
+terminals_: {2:"error",4:"NUMBER",5:"EOF",7:"PLUS"},
+productions_: [0,[3,2],[6,3],[6,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -88,6 +88,12 @@ case 1:
       console.log($$[$0-1]);
       return $$[$0-1];
     
+break;
+case 2:
+this.$ = $$[$0-2] + $$[$0]
+break;
+case 3:
+this.$ = $$[$0]
 break;
 }
 },
@@ -575,10 +581,12 @@ case 2:return 5
 break;
 case 3:return 'INVALID'
 break;
+case 4:return "PLUS"
+break;
 }
 },
-rules: [/^(?:\s+)/,/^(?:[0-9]+(\.[0-9]+)?)/,/^(?:$)/,/^(?:.)/],
-conditions: {"INITIAL":{"rules":[0,1,2,3],"inclusive":true}}
+rules: [/^(?:\s+)/,/^(?:[0-9]+(\.[0-9]+)?)/,/^(?:$)/,/^(?:.)/,/^(?:\+)/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4],"inclusive":true}}
 });
 return lexer;
 })();
