@@ -1,0 +1,22 @@
+/* lexical grammar */
+%lex
+%%
+
+\s+                   /* skip whitespace */
+[0-9]+("."[0-9]+)?    return 'NUMBER'
+<<EOF>>               return 'EOF'
+.                     return 'INVALID'
+
+/lex
+
+%start expressions
+
+%% /* language grammar */
+
+expressions
+  : NUMBER EOF
+    {
+      console.log($1);
+      return $1;
+    }
+  ;
