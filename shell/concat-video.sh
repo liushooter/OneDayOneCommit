@@ -1,0 +1,1 @@
+folder=`basename "$PWD"` && cat *.ts | ffmpeg  -i pipe: -c:a copy -c:v copy "$folder.mp4"
