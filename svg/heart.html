@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+
+<style type="text/css">
+  .wrap {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+  }
+
+  .wrap svg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .heart-outer {
+    transform-origin: 50% 50%;
+    transform: scale(0);
+  }
+
+  .heart {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -25px;
+    margin-left: -25px;
+    width: 50px;
+    height: 50px;
+    background-image: url(./bg.jpg);
+    background-size: 100% 100%;
+    transform: scale(0);
+    opacity: 0;
+  }
+</style>
+
+<body>
+
+  <div class="wrap">
+    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+      <defs>
+        <mask id="heart-mask">
+          <rect width="100%" height="100%" fill="white" />
+          <circle class="heart-inner" cx="50" cy="50" r="0" fill="black"></circle>
+        </mask>
+      </defs>
+      <circle class="heart-outer" cx="50" cy="50" r="50" fill="red" mask="url(#heart-mask)"></circle>
+    </svg>
+    <div class="heart"></div>
+  </div>
+
+  <script type="text/javascript">
+    var timeline = anime.timeline({
+      autoplay: true,
+      loop: true
+    });
+
+    timeline
+      .add({
+        targets: ".heart-outer",
+        scale: {
+          value: [0, 1],
+          duration: 500,
+          delay: 1300,
+          easing: "easeOutQuad"
+        },
+        offset: 0
+      })
+      .add({
+        targets: ".heart-inner",
+        r: {
+          value: [0, 50],
+          duration: 500,
+          delay: 1300,
+          easing: "easeOutQuad"
+        },
+        offset: 0
+      })
+      .add({
+        targets: ".heart",
+        scale: {
+          value: [0, 1],
+          duration: 500,
+          delay: 1500,
+          easing: "easeOutQuad"
+        },
+        opacity: {
+          value: 1,
+          duration: 600,
+          delay: 1500
+        },
+        offset: 0
+      });
+  </script>
+</body>
+
+<!-- https://codepen.io/janily/pen/dwMzWo -->
+</html>

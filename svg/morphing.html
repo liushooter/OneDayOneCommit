@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title></title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+</head>
+
+<style type="text/css">
+</style>
+
+<body>
+
+  <div id="">
+    <svg width="500" height="500" viewBox="0 0 600 600" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/">
+      <defs>
+        <clipPath id="Mask">
+          <path id="XMLID_2_" class="st0" d="M64,168c0,0-30-123,80-108s91,54,182,64s137-83,163-57s119,203-37,214s-205,89-299,22
+  S64,168,64,168z" />
+        </clipPath>
+      </defs>
+      <image id="_Image1" width="900px" height="600px" xlink:href="./bg.jpg" clip-path="url(#Mask)" />
+    </svg>
+  </div>
+
+  <div>
+    <svg version="1.1" x="0px" y="0px" width="600" height="400" viewBox="0 0 600 400" style="enable-background:new 0 0 600 400;" xml:space="preserve">
+      <style type="text/css">
+        .st0 {
+          fill: #FFFFFF;
+          stroke: #000000;
+          stroke-miterlimit: 10;
+        }
+      </style>
+      <polygon id="XMLID_1_" class="st0" points="491.7,309 309.3,337.2 198.7,272.5 199.3,144.3 310.7,80.8 421.3,145.5 " />
+    </svg>
+  </div>
+
+  <script type="text/javascript">
+    var morph = anime({
+      targets: 'path',
+      d: [{
+        value: 'M64,168c0,0-30-123,80-108s91,54,182,64s95,10,121,36s161,110,5,121s-239,115.9-333,48.9S64,168,64,168z'
+      }],
+      easing: 'easeInOutQuad',
+      duration: 3000,
+      direction: 'alternate',
+      // rotate: '1turn',
+      loop: true
+
+    });
+
+    var morphing = anime({
+      targets: 'polygon',
+      points: [{
+          value: '420.7,273.7 309.3,337.2 198.7,272.5 199.3,144.3 310.7,80.8 421.3,145.5'
+        },
+        {
+          value: '475.7,313 309.3,337.2 198.7,272.5 199.3,144.3 310.7,80.8 421.3,145.5'
+        },
+        {
+          value: '515,240.3 309.3,337.2 198.7,272.5 199.3,144.3 310.7,80.8 421.3,145.5 '
+        },
+        {
+          value: '454.3,357 309.3,337.2 198.7,272.5 199.3,144.3 310.7,80.8 421.3,145.5'
+        },
+        {
+          value: '491.7,309 309.3,337.2 198.7,272.5 199.3,144.3 310.7,80.8 421.3,145.5'
+        }
+      ],
+      easing: 'linear',
+      duration: 4000,
+      direction: 'alternate',
+      loop: true
+    });
+  </script>
+</body>
+
+</html>
