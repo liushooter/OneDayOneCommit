@@ -6,4 +6,4 @@ authors = ["'shooter' <'shooter@hyper.com'>"]
 [dependencies]
 time = "0.1.12"
 regex = "0.1.41"
-rocket = "0.3.16"
+rocket = "0.4.7"
